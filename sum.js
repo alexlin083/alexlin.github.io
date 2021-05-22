@@ -6,7 +6,13 @@ function sum(n) {
     return sum;
   }
   
-  console.log(sum(1)); // 1
-  console.log(sum(2)); // 3
-  console.log(sum(10)); // 55
-  console.log(sum(100000)); // 5000050000
+console.log(sum(1)); // 1
+
+// tax
+function total(x){
+    let salary=10000;
+    let rate=0.3;
+    let tax = (salary * x)*rate;
+    return tax;
+}
+console.log(total(3));
