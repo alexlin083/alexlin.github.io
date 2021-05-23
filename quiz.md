@@ -11,6 +11,14 @@ console.log("start");
 console.log("end");
 
 Ans:
+start
+IIFE
+end
+Timeout
+
+先start
+再執行IIFE(過一秒後執行Timeout)
+end 會先跑出來
 
 
 --------------------------------------------------------------------------
@@ -27,43 +35,52 @@ console.log("start");
 console.log("end");
 
 Ans:
-
+start
+IIFE
+end
+Timeout
 
 --------------------------------------------------------------------------
 (3) 請問下列程式執行的結果為何？為什麼？
 
 
-onst bar = () => console.log("bar");
+const bar = () => console.log("bar");
 
 const baz = () => console.log("baz");
 
 const foo = () => {
-    console.log("foo");
-    bar();
-    baz();
+  console.log("foo");
+  bar();
+  baz();
 };
 
 foo();
 
 Ans:
-
+foo
+bar
+baz
+呼叫foo()後
+按照順序執行foo、bar()、baz()
 
 --------------------------------------------------------------------------
 (4) 請問下列程式執行的結果為何？為什麼？
 
-onst bar = () => console.log("bar");
+const bar = () => console.log("bar");
 
 const baz = () => console.log("baz");
 
 const foo = () => {
-    console.log("foo");
-    setTimeout(bar, 0);
-    baz();
+  console.log("foo");
+  setTimeout(bar, 0);
+  baz();
 };
 
 foo();
 
 Ans:
-
+foo
+baz
+bar
 
 --------------------------------------------------------------------------
