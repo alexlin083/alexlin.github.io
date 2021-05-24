@@ -17,14 +17,15 @@ IIFE
 end
 Timeout
 
-Why:
-先start
-再執行IIFE(過一秒後執行Timeout)
-等待的1秒鐘，end 會先console出來
+Why:<br>
+先start<br>
+再執行IIFE(過一秒後執行Timeout)<br>
+等待的1秒鐘，end 會先console出來<br>
 
 
 ------------------------------分隔線--------------------------------------
-(2) 請問下列程式執行的結果為何？為什麼？
+
+(2) 請問下列程式執行的結果為何？為什麼？<br>
 console.log("start");
 
 (function () {
@@ -36,18 +37,20 @@ console.log("start");
 
 console.log("end");
 
-Ans:
-start
-IIFE
-end
+Ans:<br>
+start<br>
+IIFE<br>
+end<br>
 Timeout<br>
-Why:
+
+Why:<br>
 start先進 Stack 執行完後離開，立即執行function->console出IIFE，<br>
 接著把console.log("Timeout") 丟到Callback Queue，在執行console.log("end"),<br>
 接著even loop 發現 Stack 沒東西了，<br>
 把Callback Queue 裡面的console.log("Timeout") 丟回執行.<br>
 
 ----------------------------------分隔線-----------------------------------------
+
 (3) 請問下列程式執行的結果為何？為什麼？
 
 
@@ -68,11 +71,12 @@ foo <br>
 bar <br>
 baz <br>
 
-Why:
-呼叫foo()後
+Why:<br>
+呼叫foo()後<br>
 按照順序執行foo、bar()、baz()
 
 ----------------------------------分隔線-----------------------------------------
+
 (4) 請問下列程式執行的結果為何？為什麼？
 
 const bar = () => console.log("bar");
