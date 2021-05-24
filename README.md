@@ -17,6 +17,7 @@
 
 
 -------------------------影片中的04:30~12:50 重點-------------------------
+
 一、Call Stack 是一種資料結構(堆疊 First In Last Out)
 
 二、如果我們希望人們能看到流暢的UI，我們就不能阻塞Stack
@@ -32,7 +33,8 @@
 
 
 -------------------------影片中的12:50~17:15 重點-------------------------
-Ex:
+
+### Ex:
 ```bash
 console.log("Hi");
 setTimeout(function cb(){
@@ -41,6 +43,7 @@ setTimeout(function cb(){
 
 console.log("JSConfEU");
 ```
+
 1.main() 方法先進入stack,<br>
 2.console.log("Hi"); ->進入stack,<br>
 3.Console出 Hi,<br>
