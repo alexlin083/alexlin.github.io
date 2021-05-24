@@ -1,4 +1,5 @@
 (1) 請問下列程式執行後的結果為何？為什麼？
+
 console.log("start");
 
 (function () {
@@ -93,5 +94,8 @@ bar <br>
 
 Why: <br>
 呼叫foo() <br>
-foo、baz立即執行 <br>
-setTimeout(bar, 0);過不到1秒執行 <br>
+執行setTimeout(bar, 0); 丟到webAPI後,過0秒丟到 task queue <br>
+然後執行baz(),console出"baz"<br>
+event loop檢查stack 和 task queue <br>
+stack 沒東西,從task queue推到stack執行<br>
+再console出"bar"
