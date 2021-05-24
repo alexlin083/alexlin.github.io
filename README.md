@@ -41,24 +41,24 @@ setTimeout(function cb(){
 
 console.log("JSConfEU");
 ```
-1.main() 方法先進入stack,
-2.console.log("Hi"); ->進入stack,
-3.Console出 Hi,
-4.console.log("Hi"); ->從stack移除,
-5.setTimeout(function cb()); ->進入stack,
-6.瀏覽器為你啟動一個5秒的計時器，此時表示setTimeout已經呼叫,cb()跑到Web API,
-7.setTimeout(function cb()); ->從stack移除,
-8.console.log("JSConfEU"); ->進入stack,
-9.Console出 JSConfEU,
-10.console.log("JSConfEU"); ->從stack移除,
-11.移除之後，Web API 中有一個5秒的計時器，不會將東西丟回stack(因為丟回stack的話，該段程式碼會隨機出現在你的程式碼中)
-    所以這裡就是 "任務佇列" 或 "回調佇列" 發揮作用,
-12.跑完5秒後,Web API會將cb()回調送到 "任務佇列("task queue")
-13.事件循環(event loop)就會查看 "stack" 並查看 "task queue"裡面「按照順序排列」的有幾個待處理,
-14.如果 "stack" 是空的,將 "task queue" 的第一個推回 "stack",
-15.執行cb(),
-16.Console出 there.
-此段程式流程結束
+1.main() 方法先進入stack,<br>
+2.console.log("Hi"); ->進入stack,<br>
+3.Console出 Hi,<br>
+4.console.log("Hi"); ->從stack移除,<br>
+5.setTimeout(function cb()); ->進入stack,<br>
+6.瀏覽器為你啟動一個5秒的計時器，此時表示setTimeout已經呼叫,cb()跑到Web API,<br>
+7.setTimeout(function cb()); ->從stack移除,<br>
+8.console.log("JSConfEU"); ->進入stack,<br>
+9.Console出 JSConfEU,<br>
+10.console.log("JSConfEU"); ->從stack移除,<br>
+11.移除之後，Web API 中有一個5秒的計時器，不會將東西丟回stack(因為丟回stack的話，該段程式碼會隨機出現在你的程式碼中)<br>
+    所以這裡就是 "任務佇列" 或 "回調佇列" 發揮作用,<br>
+12.跑完5秒後,Web API會將cb()回調送到 "任務佇列("task queue")<br>
+13.事件循環(event loop)就會查看 "stack" 並查看 "task queue"裡面「按照順序排列」的有幾個待處理,<br>
+14.如果 "stack" 是空的,將 "task queue" 的第一個推回 "stack",<br>
+15.執行cb(),<br>
+16.Console出 there.<br>
+此段程式流程結束<br>
 
 補充: setTimeout秒數設為0時，跟上述同樣動作，差別在於cb()跑到Web API後,馬上又到task queue
 
