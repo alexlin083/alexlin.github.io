@@ -8,8 +8,14 @@
 //           : https://ykloveyxk.github.io/2017/02/25/axios%E5%85%A8%E6%94%BB%E7%95%A5/
 //使用axios發出一個ajax請求，然後透過ajax的請求拿到我們要的資料(json檔)
 
+
+//若是要傳送多個參數 ，建議放在物件(params)裡
+//如:axios.get('/user',{
+//          params:{
+//              name : alex    
+//  }    
+//})
 //res=> response  ,  req=> request
-//
 
 import axios from 'axios';
 //GET
