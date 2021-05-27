@@ -4,7 +4,7 @@
 // &date=20210524
 // &stockNo=2615
 //test
-
+//teach from : https://www.youtube.com/watch?v=MkwQ7duA-t0
 
 import axios from 'axios';
 //GET
