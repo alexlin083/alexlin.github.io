@@ -15,7 +15,8 @@
 //              name : alex    
 //  }    
 //})
-//res=> response  ,  req=> request
+//res=> response(回應):客戶端傳送資訊給伺服器端
+//req=> request(請求):伺服器端傳送資料給客戶端
 
 import axios from 'axios';
 //GET
