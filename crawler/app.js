@@ -18,7 +18,7 @@
 //res=> response(回應):客戶端傳送資訊給伺服器端
 //req=> request(請求):伺服器端傳送資料給客戶端
 
-import axios from 'axios';
+const axios = require('axios')
 //GET
 axios.get('https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=20210524&stockNo=2615')
 .then(res =>{
