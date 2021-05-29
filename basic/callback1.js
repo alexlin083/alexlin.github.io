@@ -1,3 +1,4 @@
+// this is callback hell!!!!  不好維護
 let doWork = function (job, timer, cb) {
     setTimeout(() => {
       let dt = new Date();
