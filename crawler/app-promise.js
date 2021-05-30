@@ -1,18 +1,11 @@
-// $ npm install axios
-// https://www.twse.com.tw/exchangeReport/STOCK_DAY?
-// response=json
-// &date=20210524
-// &stockNo=2615
-//test
+//test-promise
 const axios = require("axios");
 const fs = require("fs");
 
 const moment = require("moment");
 const BusinessDay = moment().format("YYYYMMDD");
 // console.log(date);
-// return;
 
-//...............................................................................................
 //promise
 function readFilePromise() {
   return new Promise((resolve, reject) => {
