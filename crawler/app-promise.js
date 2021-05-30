@@ -5,7 +5,6 @@
 // &stockNo=2615
 //test
 const axios = require("axios");
-
 const fs = require("fs");
 let date = new Date().getDay();
 
@@ -37,8 +36,8 @@ readFilePromise()
     if (response.data.stat === "OK") {
       console.log(response.data.date);
       console.log(response.data.title);
-    } else console.log("失敗");
+    }
   })
-  .catch((response) => {
-    console.log(`錯誤:${response}`);
+  .catch((err) => {
+    console.log(err);
   });
