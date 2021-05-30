@@ -92,25 +92,25 @@ asyncBtn.addEventListener("click", function(){
 
 ### .gitignore 忽略清單
 
-1. 打上檔名，就不會出現在 git 上面
-2. 要放進 git 裡，讓專案裡的其他人同步
-   gitignore generator 供人參考那些資料不須放
+1. 打上檔名，就不會出現在 git 上面<br>
+2. 要放進 git 裡，讓專案裡的其他人同步<br>
+   gitignore generator 供人參考那些資料不須放<br>
    <https://www.toptal.com/developers/gitignore>
 
 ### npm
 
-主版本.次版本.patch 版
+主版本.次版本.patch 版<br>
 “axios”: " ^ 0 . 21 . 1 "
 
-主版本:較大的更新，甚至可比不相容前面的版本
-次版本:更新要相容前一個版本
+主版本:較大的更新，甚至可比不相容前面的版本<br>
+次版本:更新要相容前一個版本<br>
 patch 版:修 bug...等
 
-^: 只會執行 "不更改最左邊的非零數字" 的更新
-^1.2.3 < 2.0.0 => 最左邊數字 1 不動，跟新第 2、3 的數字
+^: 只會執行 "不更改最左邊的非零數字" 的更新<br>
+^1.2.3 < 2.0.0 => 最左邊數字 1 不動，跟新第 2、3 的數字<br>
 ^0.2.3 < 0.3.0 => 最左、中間 數字不動，跟新右邊數字
 
-~:只跟新 patch
+~:只跟新 patch<br>
 看不懂的話，我有 5/29 下午的錄影教學 20:00~37:00 可以看 ，但請您自己通靈
 
 ex: cowsay 套件
@@ -122,16 +122,16 @@ npm i cowsay@1.1.3 安裝特定版本
 ```
 
 1. 加上 .gitignore -> node_modules
-2. npm i cowsay@1.1.3
-   移除 node_modules
-   npm i -> 觀察 package-lock 1.1.3
-   npm update -> 觀察 package-lock 1.5.0
-   npm i cowsay@1.3.0 -> 觀察 package-lock 1.3.0
+2. npm i cowsay@1.1.3<br>
+   移除 node_modules<br>
+   npm i -> 觀察 package-lock 1.1.3<br>
+   npm update -> 觀察 package-lock 1.5.0<br>
+   npm i cowsay@1.3.0 -> 觀察 package-lock 1.3.0<br>
 3. package.json, package-lock.json push git
 
 ### npx
 
-    1. 輕鬆地執行本機的命令 （不管是全域的，或是專案底下的）
+    1. 輕鬆地執行本機的命令 （不管是全域的，或是專案底下的）<br>
     2. 不用安裝命令，就能利用 npx 來執行 （偷偷幫你下載安裝，執行完後刪除）
 
 ```bash
@@ -151,7 +151,7 @@ npm root -g
 
 ### callback
 
-我的 callback hell 範例
+我的 callback hell 範例<br>
 https://github.com/alexlin083/nodejs-mfee16/blob/master/basic/callback1.js
 
 解決方案:promise
@@ -163,9 +163,9 @@ https://github.com/alexlin083/nodejs-mfee16/blob/master/basic/callback1.js
 3.  設一個斷點，避免程式繼續跑下去
 4.  catch() 錯誤時執行這行函式
 
-    單一個 then() =>promise
-    https://github.com/alexlin083/nodejs-mfee16/blob/master/basic/promise.js
-    多個 then() => promise
+    單一個 then() =>promise<br>
+    https://github.com/alexlin083/nodejs-mfee16/blob/master/basic/promise.js<br>
+    多個 then() => promise<br>
     https://github.com/alexlin083/nodejs-mfee16/blob/master/basic/promise2.js
 
 ```bash
