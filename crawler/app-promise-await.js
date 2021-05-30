@@ -3,7 +3,7 @@ const fs = require("fs");
 const moment = require("moment");
 const BusinessDay = moment().format("YYYYMMDD");
 
-//promise-await
+//await
 function readFilePromise() {
   return new Promise((resolve, reject) => {
     fs.readFile("stock.txt", "utf8", (err, data) => {
