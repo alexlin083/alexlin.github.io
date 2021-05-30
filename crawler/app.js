@@ -1,8 +1,5 @@
 // $ npm install axios
-// https://www.twse.com.tw/exchangeReport/STOCK_DAY?
-// response=json
-// &date=20210524
-// &stockNo=2615
+// https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=20210524&stockNo=2615
 //test
 //teach from : https://www.youtube.com/watch?v=MkwQ7duA-t0
 //           : https://ykloveyxk.github.io/2017/02/25/axios%E5%85%A8%E6%94%BB%E7%95%A5/
@@ -23,6 +20,8 @@ const axios = require("axios");
 // filesystem
 // npm i fs ??? -> 不用
 const fs = require("fs");
+const moment = require("moment");
+const BusinessDay = moment().format("YYYYMMDD");
 
 fs.readFile("stock.txt", "utf8", (err, data) => {
   if (err) {
@@ -34,7 +33,7 @@ fs.readFile("stock.txt", "utf8", (err, data) => {
     .get("https://www.twse.com.tw/exchangeReport/STOCK_DAY", {
       params: {
         response: "json",
-        date: "20210523",
+        date: BusinessDay,
         stockNo: data,
       },
     })

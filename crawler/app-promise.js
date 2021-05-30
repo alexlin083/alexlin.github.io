@@ -6,7 +6,11 @@
 //test
 const axios = require("axios");
 const fs = require("fs");
-let date = new Date().getDay();
+
+const moment = require("moment");
+const BusinessDay = moment().format("YYYYMMDD");
+// console.log(date);
+// return;
 
 //...............................................................................................
 //promise
@@ -26,13 +30,13 @@ readFilePromise()
     return axios.get("https://www.twse.com.tw/exchangeReport/STOCK_DAY", {
       params: {
         response: "json",
-        date: "date",
+        date: BusinessDay,
         stockNo: data,
       },
     });
   })
   .then(function (response) {
-    console.log(response.data.date);
+    // console.log(response.data.date);
     if (response.data.stat === "OK") {
       console.log(response.data.date);
       console.log(response.data.title);
