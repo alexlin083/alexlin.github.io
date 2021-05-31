@@ -177,3 +177,48 @@ new Promise(function(resolve, reject) {
     reject("回傳失敗")
 })
 ```
+
+#### Example
+
+```ruby
+const axios = require("axios");
+const fs = require("fs");
+const moment = require("moment");
+const BusinessDay = moment().format("YYYYMMDD");
+//promise block test
+function readFilePromise() {
+  return new Promise((resolve, reject) => {
+    fs.readFile("stock.txt", "utf8", (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
+    });
+  });
+}
+console.log("test1"); //test 1
+console.log(BusinessDay); //test 2
+console.log(data); //test 3
+readFilePromise()
+  .then((stockNumber) => {
+    return axios.get("https://www.twse.com.tw/exchangeReport/STOCK_DAY", {
+      params: {
+        response: "json",
+        date: BusinessDay,
+        stockNo: stockNumber,
+      },
+    });
+  })
+  .then(function (response) {
+    if (response.data.stat === "OK") {
+      console.log(response.data.date);
+      console.log(response.data.title);
+    }
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+console.log("test4"); //test 4
+```
+
+> 我在程式碼中設了 4 個 test 實施觀察，
