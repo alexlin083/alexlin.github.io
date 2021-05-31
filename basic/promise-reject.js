@@ -11,7 +11,7 @@ let doWorkPromise = function (job, timer, success) {
   });
 };
 
-//方法一
+// 方法一
 // doWorkPromise("刷牙", 2000, true)
 //   .then((result) => {
 //     // fulfilled 處理成功 resolve
@@ -28,7 +28,7 @@ let doWorkPromise = function (job, timer, success) {
 //   .catch((err) => {
 //     // rejected 處理失敗 reject
 //     console.error("發生錯誤", err);
-//     // return doWorkPromise("吃早餐", 3000, false);
+//     return doWorkPromise("吃早餐", 3000, true);
 //   })
 //   .finally(() => {
 //     console.log("我是 Finally");
