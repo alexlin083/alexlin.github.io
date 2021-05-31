@@ -162,6 +162,7 @@ https://github.com/alexlin083/nodejs-mfee16/blob/master/basic/callback1.js
 2.  最基礎的寫法
 3.  設一個斷點，避免程式繼續跑下去
 4.  catch() 錯誤時執行這行函式
+5.  最初目的想改善 callback hell
 
     單一個 then() =>promise<br>
     https://github.com/alexlin083/nodejs-mfee16/blob/master/basic/promise.js<br>
@@ -181,44 +182,35 @@ new Promise(function(resolve, reject) {
 #### Example
 
 ```ruby
-const axios = require("axios");
-const fs = require("fs");
-const moment = require("moment");
-const BusinessDay = moment().format("YYYYMMDD");
-//promise block test
-function readFilePromise() {
-  return new Promise((resolve, reject) => {
-    fs.readFile("stock.txt", "utf8", (err, data) => {
-      if (err) {
-        reject(err);
-      }
-      resolve(data);
-    });
-  });
-}
-console.log("test1"); //test 1
-console.log(BusinessDay); //test 2
-console.log(data); //test 3
-readFilePromise()
-  .then((stockNumber) => {
-    return axios.get("https://www.twse.com.tw/exchangeReport/STOCK_DAY", {
-      params: {
-        response: "json",
-        date: BusinessDay,
-        stockNo: stockNumber,
-      },
-    });
-  })
-  .then(function (response) {
-    if (response.data.stat === "OK") {
-      console.log(response.data.date);
-      console.log(response.data.title);
-    }
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-console.log("test4"); //test 4
+Promise.all(iterable);
 ```
 
-> 我在程式碼中設了 4 個 test 實施觀察，
+參考我的 promise.all()程式 <br>
+https://github.com/alexlin083/nodejs-mfee16/blob/master/basic/promise4.js
+
+在 promise.all()使用中，全部 promise 都 "resolve"，才會 resolve<br>
+**但只要其中有任何一個 promise 是 "reject" ，則不管其他是，才會 resolve，結果就是 reject**
+
+```ruby
+Promise.race(iterable);
+```
+
+參考我的 promise.race()程式 <br>
+https://github.com/alexlin083/nodejs-mfee16/blob/master/basic/promise4-race.js
+
+在 promise.race()使用中，只管「最快被執行」的 "resolve" 或 "reject"，其他不管<br>
+
+1. 最快的 promise 是 resolve，則 "resolve"。
+2. 最快的 promise 是 reject，則 "reject"。
+
+promise 延伸閱讀案:<br>
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+### await
+
+https://github.com/alexlin083/nodejs-mfee16/blob/master/basic/await.js
+
+1. await 運算子可被用來等待 `Promise`，只能在 `async function`內使用。
+2. 增加可讀性
+3. 大量非同步
+4. 沒有 then / catch， 自己需加 try/catch 來設定，免得瀏覽器因寫錯而壞掉
