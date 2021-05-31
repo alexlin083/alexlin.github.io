@@ -214,3 +214,7 @@ https://github.com/alexlin083/nodejs-mfee16/blob/master/basic/await.js
 2. 增加可讀性
 3. 大量非同步
 4. 沒有 then / catch， 自己需加 try/catch 來設定，免得瀏覽器因寫錯而壞掉
+
+### nodejs 時間表示套件(moment)
+
+https://momentjs.com/
