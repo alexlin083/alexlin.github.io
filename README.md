@@ -9,5 +9,5 @@
 ### Node.js 的學習過程
 
 - Node.js
-  - [0523讀書筆記]: https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/Note-Part1.md
-  - [0530學習筆記心得]: https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/Note-Part2.md
+  - [0523 讀書筆記](https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/Note-Part1.md)
+  - [0530 學習筆記心得](https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/Note-Part2.md)
