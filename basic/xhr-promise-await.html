@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>XHR</title>
+</head>
+
+<body>
+
+    <button id="asyncBtn">非同步</button>
+    <button id="countBtn">計數器</button>
+    <div id="count">0</div>
+    <div id="message">XXXXX</div>
+</body>
+<script>
+    var message = document.getElementById("message");
+    var asyncBtn = document.getElementById("asyncBtn");
+    var countBtn = document.getElementById("countBtn");
+    var count = document.getElementById("count");
+
+    countBtn.addEventListener("click", function () {
+        count.innerText = parseInt(count.innerText, 10) + 1;
+    });
+
+    //xhr-Promise
+    function xhrPromise() {
+        return new Promise((resolve, reject) => {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://34.217.120.25:3000", true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    resolve(`非同步請求 load ${xhr.responseText}`);
+                } else {
+                    reject(`非同步請求 有問題 ${xhr.status}`);
+                }
+            };
+            xhr.send();
+        });
+    }
+
+
+    asyncBtn.addEventListener("click", async function () {
+        try {
+            let result = await xhrPromise()
+            message.innerText = result;
+            console.log(result);
+
+        } catch (err) {
+            console.log(err);
+        } finally {
+            console.log("結束");
+        }
+
+
+
+        // xhrPromise()
+        //     .then((result) => {
+        //         message.innerText = result;
+        //     })
+        //     .catch((error) => {
+        //         message.innerText = error;
+        //     });
+    });
+
+    //   asyncBtn.addEventListener("click", function(){
+    //       var xhr = new XMLHttpRequest();
+    //       //HTTP method:GET、POST...
+    //       //async: true / false
+    //       //對 某個網站 發出一個 GET方法的請求， true=>非同步
+    //       xhr.open("GET" , "http://34.217.120.25:3000/" , true);
+    //       //發出請求後回來要做的事
+    //       xhr.onload = function(){
+    //         message.innerText = `非同步請求 Load ${this.responseText}`;
+    //       };
+    //       //要send出
+    //       xhr.send();
+    //   })
+
+
+</script>
+
+</html>
