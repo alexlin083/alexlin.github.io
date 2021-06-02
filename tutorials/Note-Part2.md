@@ -173,6 +173,11 @@ https://andy6804tw.github.io/2017/12/27/middleware-tutorial/
 
 ```ruby
 npm install express --save
+npm install express-generator -g   (產生器)
+
+express --view=ejs  (產生cookie、debug、ejs、express、http-errors、morgan這6個套件)
+npm install  ()
+npm start  (開啟應用程式)
 ```
 
 載入 express
