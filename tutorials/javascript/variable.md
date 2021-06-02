@@ -1,5 +1,7 @@
 # variable
 
+分成 not defined(從未被定義) || undefined(已被定義為變數，但沒有值)
+
 ## var
 
 ```ruby
