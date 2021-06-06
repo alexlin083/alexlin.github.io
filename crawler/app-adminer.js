@@ -1,3 +1,4 @@
+//第一種建入資料庫的做法 Promise.all()  每筆資料 insert 的 promise
 const axios = require("axios");
 const fs = require("fs/promises");
 const moment = require("moment");
@@ -38,8 +39,55 @@ connection = Promise.promisifyAll(connection);
         connection.queryAsync(
           `INSERT INTO stock (stock_id, stock_name) VALUES ('${stockNoName[0]}','${stockNoName[1]}');`
         );
+      } else
+        console.log(`該筆股票代號: ${stockNoName[0]} 不符合輸入資料庫參數設定`);
+    } else console.log(`該筆股票代號: ${data} 已建入過資料庫`);
+
+    //到這一步表示stock資料庫已經有了或著已建入新的stock_id 跟 stock_name
+    console.log(`查詢的股票: ${data} 成交資料`);
+    let analysisTransaction = await axios.get(
+      `https://www.twse.com.tw/exchangeReport/STOCK_DAY`,
+      {
+        params: {
+          response: "json",
+          date: BusinessDay,
+          stockNo: data,
+        },
       }
+    );
+    // console.log(analysisTransaction);
+    if (analysisTransaction.data.stat !== "OK") {
+      throw "查詢此筆失敗";
     }
+    //處理資料
+    // console.log(analysisTransaction.data.data);
+    //promise.all()作法，每筆資料 insert 的 promise
+    let insertPromises = analysisTransaction.data.data.map((item) => {
+      item = item.map((value) => {
+        return value.replace(/,/g, "");
+      });
+      //取出資料後，將日期轉換成資料庫的格式
+      //文件寫法原本是replace( / 要轉換的符號 /g, )=>(///g,) ， 但因為//是註解，故把中間的/ 用\替換
+      //replace轉換替代完後，parseInt()將字串轉成整數10進位 後 + 19110000
+      //再由moment() 以 format()格式轉換成日期格式
+      item[0] = parseInt(item[0].replace(/\//g, ""), 10) + 19110000; // 20210601
+      item[0] = moment(item[0], "YYYYMMDD").format("YYYY-MM-DD"); // 2021-06-01
+      //unshift()=>把data股票代號加入到item陣列的最前端
+      item.unshift(data);
+      // console.log(item);
+
+      //鍵入資料庫 stock_price
+      //在多筆資料的情況下，VALUE 後面 可用(?) 來取代
+      //單一筆則只能用 ? ，不能有括弧
+      //MySQL -> IGNORE 避免"重複插入記錄"的方法=> 有鍵入過的資料會跳過 ， 超好用XD
+      return connection.queryAsync(
+        "INSERT IGNORE INTO stock_price (stock_id, date, volume, amount, open_price, high_price, low_price, close_price, delta_price, transactions) VALUES (?)",
+        [item]
+      );
+    });
+    //
+    let insertResults = await Promise.all(insertPromises);
+    console.log(`鍵入的股票代號(${data})資料有: ${insertResults.length} 筆`);
   } catch (err) {
     console.error(err);
   } finally {
@@ -47,51 +95,3 @@ connection = Promise.promisifyAll(connection);
     connection.end();
   }
 })();
-
-// fs.readFile("stock.txt", "utf8")
-//   .then((data) => {
-//     console.log(`讀到的stockNo:${data}`);
-
-//     //先檢查這個代碼有沒有找過
-//     connection.query(
-//       `SELECT stock_id FROM stock WHERE stock_id=${data}`,
-//       function (err, result) {
-//         if (err) {
-//           throw err;
-//         }
-//         //如果MySQL沒有此股票stockNo，執行->axios
-//         if (result.length === 0) {
-//           //用股票代碼查股票名稱
-//           return axios.get(
-//             `https://www.twse.com.tw/zh/api/codeQuery?query=${data}`
-//           );
-//         }
-//       }
-//     );
-//   })
-//   .then(function (response) {
-//     // console.log(response.data);
-
-//     } else {
-//       throw "查不到此股名稱";
-//     }
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   })
-//   .finally(() => {
-//     connection.end();
-//   });
-
-//   return axios.get("https://www.twse.com.tw/zh/api/codeQuery?query=2884", {
-//       params: {
-//         response: "json",
-//         date: BusinessDay,
-//         stockNo: data,
-//       },
-//     });
-
-// if (response.data.stat === "OK") {
-//     console.log(response.data.date);
-//     console.log(response.data.title);
-//   }
