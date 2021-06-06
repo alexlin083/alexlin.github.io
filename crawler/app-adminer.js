@@ -3,13 +3,15 @@ const fs = require("fs/promises");
 const moment = require("moment");
 const BusinessDay = moment().format("YYYYMMDD");
 const mysql = require("mysql");
+require("dotenv").config();
 const Promise = require("bluebird");
 //設定資料庫連線
 let connection = mysql.createConnection({
-  host: "localhost",
-  user: "alex",
-  password: "xup6xu4jo6",
-  database: "stock",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
 });
 //connection->Promise化
 connection = Promise.promisifyAll(connection);
@@ -22,6 +24,7 @@ connection = Promise.promisifyAll(connection);
     let stock = await connection.queryAsync(
       `SELECT stock_id FROM stock WHERE stock_id=${data}`
     );
+    console.log(stock);
     //stock.length <= 0 ， 如果我們輸入的代碼資料庫找不到，執行axios抓取
     if (stock.length <= 0) {
       let response = await axios.get(
