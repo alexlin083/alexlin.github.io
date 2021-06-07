@@ -12,6 +12,7 @@ const server = http.createServer((req, res) => {
   //   console.log(req.url);
 
   res.statusCode = 200; // 2xx, 3xx, 4xx, 5xx
+  //將亂碼轉換成中文
   res.setHeader("Content-Type", "text/plain;charset=UTF-8");
   //   res.write("Hi 找我嗎?");
   //   res.end();
@@ -34,7 +35,7 @@ const server = http.createServer((req, res) => {
   }
 });
 
-// port
+// 設定port
 server.listen(3000, () => {
   console.log("我跑起來了喔，我要收 3000 port");
 });
