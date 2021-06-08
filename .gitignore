@@ -6,3 +6,8 @@ logs
 stock.txt
 
 .env
+
+bin
+public
+routes
+views
