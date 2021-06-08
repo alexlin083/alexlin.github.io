@@ -64,5 +64,3 @@ npm install express-generator -g   //裝在全域(-g)
 npx express --view=pug myweb       //一次安裝基本express所有套件(記得在專案底下環境執行)  也可以裝在全域
 npm i                              //pakage-lock.json(套件管理檔)
 ```
-
-![picture](/../images/express.png)
