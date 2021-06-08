@@ -67,7 +67,7 @@ connection = Promise.promisifyAll(connection);
         return value.replace(/,/g, "");
       });
       //取出資料後，將日期轉換成資料庫的格式
-      //文件寫法原本是replace( / 要轉換的符號 /g, )=>(///g,) ， 但因為//是註解，故把中間的/ 用\替換
+      //文件寫法原本是replace( / 要轉換的符號 /g, )=>(/ //g,) ， 但因為//是註解，電腦無法判斷，故再中間的轉換符號再+\
       //replace轉換替代完後，parseInt()將字串轉成整數10進位 後 + 19110000
       //再由moment() 以 format()格式轉換成日期格式
       item[0] = parseInt(item[0].replace(/\//g, ""), 10) + 19110000; // 20210601
