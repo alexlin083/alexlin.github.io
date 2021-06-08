@@ -65,4 +65,4 @@ npx express --view=pug myweb       //一次安裝基本express所有套件(記�
 npm i                              //pakage-lock.json(套件管理檔)
 ```
 
-![picture](/images/express.png)
+![picture](/../images/express.png)
