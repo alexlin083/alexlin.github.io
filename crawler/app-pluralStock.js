@@ -21,7 +21,7 @@ connection = Promise.promisifyAll(connection);
   try {
     await connection.connectAsync();
 
-    let data = await fs.readFile("stock.txt", "utf8");
+    let data = await fs.readFile("stocks.txt", "utf8");
     let array = await data.split(",");
     // console.log(`讀到的stockNo:${array[0]}、${array[1]}、${array[2]}`);
     for (let i = 0; i <= 2; i++) {
