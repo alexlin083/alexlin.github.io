@@ -24,7 +24,7 @@ connection = Promise.promisifyAll(connection);
     let data = await fs.readFile("stocks.txt", "utf8");
     let array = await data.split(",");
     // console.log(`讀到的stockNo:${array[0]}、${array[1]}、${array[2]}`);
-    for (let i = 0; i <= 2; i++) {
+    for (let i = 0; i <= array.length; i++) {
       //   console.log(array[1]);
       let stock = await connection.queryAsync(
         `SELECT stock_id FROM stock WHERE stock_id=${array[i]}`
