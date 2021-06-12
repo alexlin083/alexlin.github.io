@@ -64,3 +64,34 @@ npm install express-generator -g   //裝在全域(-g)
 npx express --view=pug myweb       //一次安裝基本express所有套件(記得在專案底下環境執行)  也可以裝在全域
 npm i                              //pakage-lock.json(套件管理檔)
 ```
+
+## cookie
+
+寫入 cookie，並加入過期時間(使用 GMT 時間)
+
+```ruby
+document.cookie = "username=alex; expires=Mon, 12 Jun 2021 09:10:55 GMT; path/"
+```
+
+GMT 時間(格林威治標準時間)
+
+- new Date().toGMTString()
+
+寫入 cookie，10 秒後消失
+
+```ruby
+router.get("/", function (req, res, next) {
+  console.log(req.cookies);
+  res.cookie("name", "banana", {
+    maxAge: 10000,
+    httpOnly: true, //瀏覽器的console上無法抓到，即隱藏起來
+  });
+  res.render("index", { title: "Express" });
+});
+```
+
+- 數據的傳輸(夾帶哪些資訊給 server)
+- res.cookie() 前端傳給後端
+- maxAge: 幾秒後消失 cookie
+- httpOnly: 不會顯示在 瀏覽器的 console 上，但 Application 還是會有
+- 瀏覽器->檢查->Network->Headers->Response Headers 裡有 Set-Cookie: (會有詳細 cookie 資訊)
