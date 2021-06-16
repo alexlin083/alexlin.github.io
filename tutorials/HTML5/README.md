@@ -2,30 +2,30 @@
 
 > 1.  建立事件聆聽功能
 >
->         一個物件 + 一個事件 + 一個處理函數
+> 一個物件 + 一個事件 + 一個處理函數
 >
->         (1). 寫在.html
-
+> (1). 寫在.html
+>
 > ```ruby
 > <body onload="doFirst()"></body>
 > <button onclick="doNothing()"></button>
 > ```
-
->         (2). 寫在.js (傳統的寫法)
-
-```ruby
-window.onload = doFirst;
-window.onload = function(){};
-按鈕物件.onclick = doNothing;
-```
-
->         (3). 寫在.js (W3C 的推薦方式)
-
-```ruby
-window.addEventListener('load',doFirst);
+>
+> (2). 寫在.js (傳統的寫法)
+>
+> ```ruby
+> window.onload = doFirst;
+> window.onload = function(){};
+> 按鈕物件.onclick = doNothing;
+> ```
+>
+> (3). 寫在.js (W3C 的推薦方式)
+>
+> ```ruby
+> window.addEventListener('load',doFirst);
 >     load, click | event
 >     onload, onclick | event handler
-```
+> ```
 
 > 2.  事件分類
 >
