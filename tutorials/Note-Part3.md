@@ -95,3 +95,38 @@ router.get("/", function (req, res, next) {
 - maxAge: 幾秒後消失 cookie
 - httpOnly: 不會顯示在 瀏覽器的 console 上，但 Application 還是會有
 - 瀏覽器->檢查->Network->Headers->Response Headers 裡有 Set-Cookie: (會有詳細 cookie 資訊)
+
+## session
+
+[session-Github](https://github.com/expressjs/session)
+[IT 幫幫忙 session](https://ithelp.ithome.com.tw/articles/10228375)
+
+- 儲存在伺服器的暫存資料，此暫存可放在記憶體或資料庫上。
+- session 可在 cookie 上儲存一筆便是你是誰的 session ID。
+
+安裝:
+
+```ruby
+npm install express-session
+```
+
+```ruby
+var session = require("express-session");
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}))
+```
+
+- secret: 會用它自己的編碼方式編寫(資安問題)
+- cookie：儲存 sessionID 的 Cookie 的形式。
+- genid：產生 sessionID 的方式。
+- name：儲存 sessionID 的那個 Cookie 的名稱。
+- resave：即使 Session 沒做變動，是否強制重新儲存進 Store。
+- rolling：是否每次 Request 都強制更換 sessionID。
+- saveUninitialized：是否強制將未初始化的 Session 儲存至 Store。（新產生的 Session）
+- secret：用來認證該 Session 的資料。（必填）
+- store：儲存 Session 的地方。
+- unset：設定是否刪除或保留。（'destroy' 或 'keep'）
