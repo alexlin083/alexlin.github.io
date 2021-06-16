@@ -6,21 +6,29 @@
 >
 >         (1). 寫在.html
 
+> ```ruby
+> <body onload="doFirst()"></body>
+> <button onclick="doNothing()"></button>
+> ```
+
+>         (2). 寫在.js (傳統的寫法)
+
 ```ruby
-<body onload="doFirst()"></body>
-<button onclick="doNothing()"></button>
+window.onload = doFirst;
+window.onload = function(){};
+按鈕物件.onclick = doNothing;
 ```
 
->     (2). 寫在.js (傳統的寫法)
->     window.onload = doFirst;
->     window.onload = function(){};
->     按鈕物件.onclick = doNothing;
->     (3). 寫在.js (W3C 的推薦方式)
->     window.addEventListener('load',doFirst);
+>         (3). 寫在.js (W3C 的推薦方式)
+
+```ruby
+window.addEventListener('load',doFirst);
 >     load, click | event
 >     onload, onclick | event handler
+```
 
 > 2.  事件分類
+>
 >     (1). 輸入裝置(滑鼠)
 >     click | mousedown | mouseup
 >     dblclick | contextmenu
