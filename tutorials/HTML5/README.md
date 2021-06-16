@@ -95,3 +95,12 @@
 > ```
 
 > 4.  引用事件物件
+
+## 上課使用連結
+
+- [免費 + 付費圖庫](https://www.freepik.com/)
+- 假圖
+  - https://fakeimg.pl/
+  - https://loremflickr.com/
+- [CSS Specificity](https://ithelp.ithome.com.tw/m/articles/10240444)
+- [EmailJS](https://www.emailjs.com/)
