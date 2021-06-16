@@ -23,3 +23,8 @@
 
 - HTML5
   - [事件 Event](https://github.com/alexlin083/nodejs-mfee16/tree/master/tutorials/HTML5)
+
+### jQuery
+
+- jQuery
+  - [jQuery selecter](https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/jQuery/DOMuse.md)
