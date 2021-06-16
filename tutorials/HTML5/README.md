@@ -1,10 +1,16 @@
 # 事件 (event-driven language)
 
 > 1.  建立事件聆聽功能
->     一個物件 + 一個事件 + 一個處理函數
->     (1). 寫在.html
->     <body onload="doFirst()"></body>
->     <button onclick="doNothing()"></button>
+>
+>         一個物件 + 一個事件 + 一個處理函數
+>
+>         (1). 寫在.html
+
+```ruby
+<body onload="doFirst()"></body>
+<button onclick="doNothing()"></button>
+```
+
 >     (2). 寫在.js (傳統的寫法)
 >     window.onload = doFirst;
 >     window.onload = function(){};
@@ -47,10 +53,10 @@
 >       stopPropagation() //阻止冒泡事件
 >     - 舉例
 >       theButton.onclick = function(e){
->       ----------------------------------------
+>       ***
 >       | 只要在此，有使用任何一個事件物件的屬性或方法 |
 >       | 就要引用事件物件 |
->       ----------------------------------------
+>       ***
 >       };
 
 > 4.  引用事件物件
