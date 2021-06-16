@@ -20,7 +20,7 @@ document
 
 ---
 
-1. DOM 的屬性
+### DOM 的屬性
 
 (1). 描述彼此之間的關係
 
@@ -38,7 +38,7 @@ nodeValue
 nodeName
 ```
 
-2. 尋找物件
+### 尋找物件
 
 (1). 直接找
 
@@ -57,7 +57,7 @@ querySelector()
 querySelectorAll()
 ```
 
-3. 新增物件
+### 新增物件
 
 (1). 先建標籤
 
@@ -82,7 +82,7 @@ let image = document.createElement('img');
 尋找父節點.replaceChild(子物件,兄弟節點);
 ```
 
-4. 刪除物件
+### 刪除物件
 
 - 尋找父節點.removeChild(子物件);
 
