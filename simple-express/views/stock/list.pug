@@ -1,0 +1,14 @@
+extends ../_layouts/master 
+
+block content 
+    h1 股票列表
+
+    table 
+        tr 
+            th 股票代號
+            th 股票名稱
+
+        each stock in stocks 
+            tr 
+                td #{stock.stock_id}
+                td #{stock.stock_name}

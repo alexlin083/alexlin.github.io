@@ -1,0 +1,13 @@
+table {
+  border: black 1px solid;
+  width: 200px;
+  text-align: center;
+}
+th {
+  background-color: aqua;
+  border: black 1px solid;
+  color: black;
+}
+td {
+  border: black 1px solid;
+}
