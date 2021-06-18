@@ -1,3 +1,5 @@
+//資料連線
+const connection = require("./utils/db");
 // http://expressjs.com/en/starter/hello-world.html
 const express = require("express");
 let app = express();
@@ -19,11 +21,13 @@ app.use(function (req, res, next) {
 //req -> router
 //req -> middlewares..........-> router
 
-//static
+// static
+// 可以指定一個或多個目錄或是"靜態資源目錄"
+// 自動幫你為 public 裡面的檔案建立路由
 app.use(express.static("public"));
-
+// 第一個 : views 變數 ， 第二個 : views 檔案夾名稱
 app.set("views", "views");
-
+// 告訴 express 我們用的 view engine 是 pug
 app.set("view engine", "pug");
 
 //路由router
@@ -41,9 +45,16 @@ app.get("/test", function (req, res) {
 //   });
 
 app.get("/about", function (req, res) {
-  res.send("這是express測試port 3000/路由about");
+  res.render("about");
 });
 
-app.listen(port, () => {
+app.get("/stock", async (req, res) => {
+  let queryResults = await connection.queryAsync("SELECT * FROM stock;");
+  res.render("stock/list");
+  stocks = queryResults;
+});
+
+app.listen(port, async () => {
+  await connection.connectAsync();
   console.log("這是port3000的測試頁");
 });
