@@ -19,9 +19,17 @@ app.use(function (req, res, next) {
 //req -> router
 //req -> middlewares..........-> router
 
+//static
+app.use(express.static("public"));
+
+app.set("views", "views");
+
+app.set("view engine", "pug");
+
 //路由router
 app.get("/", function (req, res) {
-  res.send("這是express測試port 3000");
+  // res.send("這是express測試port 3000");
+  res.render("index");
 });
 
 app.get("/test", function (req, res) {
