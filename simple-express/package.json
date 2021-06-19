@@ -17,5 +17,8 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.7",
     "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.14"
   }
 }
