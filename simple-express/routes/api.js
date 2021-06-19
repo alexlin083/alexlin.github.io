@@ -5,7 +5,6 @@ const connection = require("../utils/db");
 
 router.get("/stocks", async (req, res) => {
   let queryResults = await connection.queryAsync("SELECT * FROM stock;");
-
   res.json(queryResults);
 });
 
