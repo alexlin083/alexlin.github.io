@@ -1,0 +1,24 @@
+extends ../_layouts/master 
+
+block content 
+    h1 各股股票資訊
+
+    table 
+        tr 
+            th 股票代號
+            th 日期
+            th 開盤價
+            th 最高價
+            th 最低價
+            th 收盤價
+            th 價差
+
+        each stock in stockPrices  
+            tr 
+                td #{stock.stock_id}
+                td #{stock.date}
+                td #{stock.open_price}
+                td #{stock.high_price}
+                td #{stock.low_price}
+                td #{stock.close_price}
+                td #{stock.delta_price}
