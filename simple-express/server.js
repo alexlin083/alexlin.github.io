@@ -48,23 +48,8 @@ app.get("/about", function (req, res) {
   res.render("about");
 });
 
-app.get("/stock", async (req, res) => {
-  let queryResults = await connection.queryAsync("SELECT * FROM stock;");
-  res.render("stock/list", {
-    stocks: queryResults,
-  });
-});
-
-app.get("/stock/:stockCode", async (req, res) => {
-  // res.send(req.params.stockCode);
-  let queryResult = await connection.queryAsync(
-    "SELECT *FROM stock_price WHERE stock_id = ? ORDER BY date;",
-    req.params.stockCode
-  );
-  res.render("stock/detail", {
-    stockPrices: queryResult,
-  });
-});
+let stockRouter = require("./routes/stock");
+app.use("/stock", stockRouter);
 
 app.listen(port, async () => {
   await connection.connectAsync();
