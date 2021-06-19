@@ -2,8 +2,9 @@
 
 $(function () {
   //   $.ajax({
-  //     type: "GET",
-  //     url: "/api/stocks",
+  //     method: "GET",
+  //     url: '/api/stock',
+  //     dataType: "json",
   //   }).done(function (data) {
   //     console.log(data);
   //   });
