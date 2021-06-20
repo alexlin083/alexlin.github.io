@@ -21,6 +21,9 @@ app.use(function (req, res, next) {
 //req -> router
 //req -> middlewares..........-> router
 
+//解讀POST 過來的middleware
+app.use(express.urlencoded({ extended: false }));
+
 // static
 // 可以指定一個或多個目錄或是"靜態資源目錄"
 // 自動幫你為 public 裡面的檔案建立路由
