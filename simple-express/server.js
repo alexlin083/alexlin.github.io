@@ -34,6 +34,8 @@ let stockRouter = require("./routes/stock");
 app.use("/stock", stockRouter);
 let apiRouter = require("./routes/api");
 app.use("/api", apiRouter);
+let authRouter = require("./routes/auth");
+app.use("/auth", authRouter);
 
 //路由router
 app.get("/", function (req, res) {
