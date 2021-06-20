@@ -1,5 +1,6 @@
 //資料連線
 const connection = require("./utils/db");
+require("dotenv").config();
 // http://expressjs.com/en/starter/hello-world.html
 const express = require("express");
 let app = express();
@@ -23,6 +24,28 @@ app.use(function (req, res, next) {
 
 //解讀POST 過來的middleware
 app.use(express.urlencoded({ extended: false }));
+//加入此使用 ，前端送json檔時，express 才能解析json檔
+app.use(express.json());
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
+//處理session
+// 想要可以處理 session
+// 產生一個 session id，可以透過這個 session id 來找到存在伺服器端的 session
+// (不論這個 session 是存在記憶體、硬碟、資料庫、redis..)
+// 問題是怎麼知道這一個 request 的 session 是誰？？？？
+// ==> session id 存在 cookie
+//     express-session 預設的 cookie name: connect.sid
+//     如此一來，每次來的 request 都會帶著這個 session id
+//     這樣就會知道這個 request 的 session 是誰
+const expressSession = require("express-session");
+app.use(
+  expressSession({
+    secret: process.env.SESSION_SECRET,
+    saveUninitialized: false,
+    resave: false,
+  })
+);
 
 // static
 // 可以指定一個或多個目錄或是"靜態資源目錄"
@@ -33,16 +56,42 @@ app.set("views", "views");
 // 告訴 express 我們用的 view engine 是 pug
 app.set("view engine", "pug");
 
+//把res.session 設定給 res  locals
+app.use(function (req, res, next) {
+  //把 request 的 session 資料設定給 res 的 locals
+  //views 就可以拿到資料
+  res.locals.member = req.session.member;
+  next();
+});
+// locals 是 response 物件提供的一個屬性
+// 讓我們可以傳遞資料到 views
+
+//在登入後，寫一個彈跳視窗
+app.use(function (req, res, next) {
+  if (req.session.message) {
+    res.locals.message = req.session.message;
+    //登入後 刪除此登入訊息，不刪除的話，在登入的狀態每跳一頁面都會迸出訊息XD
+    delete req.session.message;
+  }
+  next();
+});
+
 let stockRouter = require("./routes/stock");
 app.use("/stock", stockRouter);
 let apiRouter = require("./routes/api");
 app.use("/api", apiRouter);
 let authRouter = require("./routes/auth");
 app.use("/auth", authRouter);
+let memberRouter = require("./routes/member");
+app.use("/member", memberRouter);
 
 //路由router
 app.get("/", function (req, res) {
   // res.send("這是express測試port 3000");
+  console.log("這裡是首頁");
+
+  res.cookie("lang", "zh-TW");
+
   res.render("index");
 });
 
@@ -58,6 +107,12 @@ app.get("/about", function (req, res) {
   res.render("about");
 });
 
+app.use(function (req, res, next) {
+  console.log("啊啊啊，有人 404 了!!!");
+  next();
+});
+
+// 所有的路由的下面
 app.use(function (req, res, next) {
   res.status(404);
   res.render("404");
