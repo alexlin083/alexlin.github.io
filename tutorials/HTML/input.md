@@ -1,8 +1,10 @@
-# label 標籤 如何包 <input type="file">
+# label 標籤 如何包 < input type="file" >
 
 參考文章:https://ithelp.ithome.com.tw/articles/10196187
 
-在做專題時，遇到上傳檔案的情況，想說怎麼都無法改 input->type=file 的 CSS 樣式，上網查了一下
+## 在做專題時，遇到上傳檔案的情況
+
+想說怎麼都無法改 input->type=file 的 CSS 樣式，上網查了一下順道記錄下來
 
 [stackoverflow](https://stackoverflow.com/questions/572768/styling-an-input-type-file-button)
 
