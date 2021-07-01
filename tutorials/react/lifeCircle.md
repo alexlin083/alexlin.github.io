@@ -17,13 +17,13 @@
 
 呼叫順序
 
-> constructor
-> render
+> constructor<br>
+> render<br>
 > DidMount
 
 有更動元件的話
 
-> render 先渲染
+> render 先渲染<br>
 > componentDidUpdate 再更動，也會抓到最後更動的值
 
 ```ruby
