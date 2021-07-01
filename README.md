@@ -43,4 +43,4 @@
 
 ### React
 
-- [lifeCircle](https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/react/lifeCircle.md)
+- [lifeCycle](https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/react/lifeCycle.md)
