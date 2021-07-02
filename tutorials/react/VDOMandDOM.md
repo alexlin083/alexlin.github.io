@@ -13,6 +13,7 @@ React 是建立於 Virtual DOM 之上，為的是避免直接操作 DOM，因為
 3. 虛擬 DOM 最後還是會被 React 轉化成 DOM 並呈現在頁面上。
 
 ```ruby
+
 import React from 'react';
 
 function ChildA(props) {
