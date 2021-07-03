@@ -2,7 +2,7 @@
 
 紀錄在中壢資策會學習的點點滴滴，持續 commit、終身 commit
 
-## 2021/07/02 更新
+## 2021/07/03 更新
 
 ---
 
@@ -45,6 +45,7 @@
 
 - [lifeCycle](https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/react/lifeCycle.md)
 - [VDOM&DOM](https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/react/VDOMandDOM.md)
+- [Class](https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/react/class.md)
 
 ### JSX 語法
 
