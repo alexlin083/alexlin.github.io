@@ -31,7 +31,7 @@ import React, { useState } from 'react';
 function Demo(){
 
     const [count, setCount] = useState(0);
-    const [name], setName] = useState('Alex');
+    const [name, setName] = useState('Alex');
 
     function cli(){
         //第一種寫法
