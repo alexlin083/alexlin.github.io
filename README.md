@@ -2,7 +2,7 @@
 
 紀錄在中壢資策會學習的點點滴滴，持續 commit、終身 commit
 
-## 2021/07/03 更新
+## 2021/07/04 更新
 
 ---
 
@@ -48,6 +48,7 @@
 - [Class](https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/react/class.md)
 - Hook
   - [useState](https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/react/useState.md)
+  - [useEffect](https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/react/useEffect.md)
 
 ### JSX 語法
 
