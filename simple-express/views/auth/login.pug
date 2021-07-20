@@ -1,0 +1,13 @@
+extends ../_layouts/master
+
+block content
+  h1 登入表單
+  form.form(id="loginFrm", method="POST", action="/auth/login")
+    div
+      label(for="email") 帳號:
+      input#email(name="email", type="mail", value="aaa@gmail.com")
+    div
+      label(for="password") 密碼:
+      input#email(name="password", type="password", required, value="123456")
+    button(type="submit") 送出
+  

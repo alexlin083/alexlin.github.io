@@ -1,0 +1,23 @@
+extends ../_layouts/master
+
+block content
+  h1 註冊表單
+
+  form.form#registerFrm(method="POST", action="/auth/register" enctype="multipart/form-data")
+    div
+      label(for="email") Email
+      input(name="email", type="mail" ,value="aaa@gmail.com")
+    div
+      label(for="password") 密碼
+      input(name="password", type="password" ,value="123456")
+    div
+      label(for="confirmPassword") 確認密碼
+      input(name="confirmPassword", type="password", value="123456")
+    div
+      label(for="name") 姓名
+      input(name="name", type="text", value="Alex")
+    div 
+      label(for="photo") 上傳照片
+      input(type="file" ,name="photo") 
+    
+    button(type="submit") 送出

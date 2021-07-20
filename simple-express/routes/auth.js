@@ -3,7 +3,8 @@ const router = express.Router();
 const connection = require("../utils/db");
 const { body, validationResult } = require("express-validator"); //引用 express-validator
 const bcrypt = require("bcrypt"); //引用加密套件
-
+const nodeMailer = require("nodemailer");
+require("dotenv").config();
 const path = require("path");
 const multer = require("multer"); //引用上傳套件
 //設定上傳檔案的地方及儲存方式
@@ -67,6 +68,7 @@ router.post(
   registerRules,
   async (req, res, next) => {
     //do somthing
+    console.log(req.body);
 
     //後端工程師要再次對前端送來的資料作驗證
     const validateResult = validationResult(req); //這邊可以拿到 req結果
@@ -74,7 +76,14 @@ router.post(
     //未完成...........................................................................................
     if (!validateResult.isEmpty()) {
       //資料不是空的話，表示有誤
-      return next(new Error("註冊的表單資料有誤"));
+      //   return next(new Error("註冊的表單資料有誤"));
+      console.log(validateResult);
+      let error = validateResult.array();
+      req.session.message = {
+        title: "資料錯誤",
+        text: error[0].msg,
+      };
+      return res.redirect(303, "/auth/register");
     }
 
     //檢查這個資料有沒有在資料庫
@@ -92,6 +101,25 @@ router.post(
     //檢查有沒有上傳圖片
     let filepath = req.file ? "/uploads/" + req.file.filename : null;
 
+    //設定發送email的帳號
+    //從gmail服務
+    const transporter = nodeMailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "lwlw54088@gmail.com",
+        pass: process.env.GMAIL_SECRET,
+      },
+    });
+
+    //設定發送的信件內容，收件者，寄件者，以及信件標題
+    let timeNow = new Date();
+    const mailOptions = {
+      from: "lwlw54088@gmail.com",
+      to: req.body.email, // 註冊帳號人的email
+      subject: `${req.body.name} 感謝您註冊 `,
+      text: `發送時間: ${timeNow}`,
+    };
+
     //沒有在資料庫就鍵入
     let result = await connection.queryAsync(
       "INSERT INTO members (email,password,name, photo) VALUES (?)",
@@ -104,6 +132,9 @@ router.post(
         ],
       ]
     );
+    console.log(`email: ${req.body.email} , name : ${req.body.name}`);
+    //鍵入成功發送email
+    // transporter.sendMail(mailOptions, function () {});
 
     res.send("註冊成功!!");
   }
