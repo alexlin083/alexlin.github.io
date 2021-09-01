@@ -4,7 +4,7 @@ require("dotenv").config();
 // http://expressjs.com/en/starter/hello-world.html
 const express = require("express");
 let app = express();
-let port = 3000;
+let port = 4000;
 
 // middleware 中介函式、中介軟體
 // 是一個可以接收request和response物件的函式（function）。
