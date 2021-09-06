@@ -2,7 +2,7 @@
 
 紀錄在中壢資策會學習的點點滴滴，持續 commit、終身 commit
 
-## 2021/07/20 更新
+## 2021/09/06 更新
 
 ---
 
@@ -20,6 +20,7 @@
   - [DOM](https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/javascript/DOM.md)
   - [變數](https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/javascript/variable.md) var、let、const
   - [陣列](https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/javascript/array.md) & arrayMDN
+  - [好文共賞](https://github.com/alexlin083/nodejs-mfee16/blob/master/tutorials/javascript/javascript.md)
 
 ### HTML
 
