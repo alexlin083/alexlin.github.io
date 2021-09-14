@@ -23,6 +23,8 @@ map : 陣列中全部資料做完一起輸出。
 - filter() 找出陣列中**符合指定資料**的資料並構成新陣列
 - join() 陣列中所有的元素連接、合併成一個字串，並回傳此字串
 
+- reduce() 陣列中每項元素（由左至右）累加
+
 [arrayMDN](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
 [操作 JS 陣列的 20 種方式](https://www.youtube.com/watch?v=x-P1VxUgYG4&ab_channel=%E5%81%B7%E7%B1%B3%E9%A8%8E%E5%B7%B4%E5%93%A5)
